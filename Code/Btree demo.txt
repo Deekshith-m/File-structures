@@ -1,0 +1,113 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class BTreedemo {
+	public  static BTree gen()
+	{
+		 BTree<String, String> st = new BTree<String, String>();
+		 String filePath = "C:\\Users\\Deekshith\\Desktop\\deek.txt";
+		 
+		try {
+		    BufferedReader lineReader = new BufferedReader(new FileReader(filePath));
+		    String lineText = null;
+		 
+		    while ((lineText = lineReader.readLine()) != null)
+		    {	
+		         String[] key=lineText.split("\\s+"); 
+		         st.put(key[0], lineText);
+		         
+			     
+		        }
+		   
+		    lineReader.close();
+		} catch (IOException ex) {
+		    System.err.println(ex);
+	}
+	return st;	
+	}
+	public  static int ser(String ky,BTree<String, String> st)
+	{
+		
+		
+		 String kr=st.get(ky);
+		if(st.get(ky)!=null)
+		{
+  	   String [] sd= kr.split("\\s+");
+		 System.out.println("Record ID:    "+sd[0]);
+		 System.out.println("Vehicle Make: "+sd[1]);
+		 System.out.println("Vehicle Model:"+sd[2]);
+		 System.out.println("Model Year:   "+sd[3]);
+		 System.out.println("Component Recalled:"+sd[4]);
+		 System.out.println("Estimated Units:    "+sd[5]);
+		 System.out.println("Recall Manufacturer:    "+sd[6]);
+		 System.out.println("Recall Notification Date    "+sd[7]);
+		
+		 return 1;
+		 
+		}
+                else{
+                    return 0;
+                }
+		 
+	
+	}
+	public  static void ins(String val,BTree<String, String> st)
+	{
+		String [] sd= val.split("\\s+");
+		if(ser(sd[0],st)==1)
+		{
+		 System.out.println("values already exist");	
+		}
+		else
+		{
+			 String filePath = "C:\\Users\\Deekshith\\Desktop\\deek.txt";
+			st.put(sd[0],sd.toString());
+			try {
+				FileWriter fr= new FileWriter(filePath,true);
+			    BufferedWriter lineWriter = new BufferedWriter(fr);
+			    PrintWriter pw= new  PrintWriter(lineWriter);
+			    pw.println(val);
+			    
+			 
+				     
+			        
+			   
+			    lineWriter.close();
+			} catch (IOException ex) {
+			    System.err.println(ex);
+		}
+			
+		}
+		
+	} 
+	
+	
+           public  static BTree gen2()
+	{
+		 BTree<String, String> st = new BTree<String, String>();
+		 String filePath = "C:\\Users\\Deekshith\\Desktop\\deek.txt";
+		 
+		try {
+		    BufferedReader lineReader = new BufferedReader(new FileReader(filePath));
+		    String lineText = null;
+		 
+		    while ((lineText = lineReader.readLine()) != null)
+		    {	
+		         String[] key=lineText.split("\\s+"); 
+		         st.put(key[0], lineText);
+		         
+			     
+		        }
+		   
+		    lineReader.close();
+		} catch (IOException ex) {
+		    System.err.println(ex);
+	}
+	return st;	
+	}
+        
+		 
+	
+	
+	}
+
